@@ -4,7 +4,7 @@ This repository contains complementary resources of VINData API documentation of
 
 ## Getting Started
 
-Download Postman collection and environment variables.
+Download our Postman collection and environment variables.
 
 1. Click on the green "Code" button above and then "Download ZIP" menu item to download both the Postman collection and environment variables.
 2. Unpack downloaded ZIP file and import \*.json files into Postman application.
