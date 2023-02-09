@@ -1,0 +1,719 @@
+{
+	"info": {
+		"_postman_id": "dc833c02-3731-484e-a68d-ea724eb3f869",
+		"name": "VINData API v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3501595"
+	},
+	"item": [
+		{
+			"name": "Authentication/Get Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"apitoken\", jsonData.token);\r",
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"secret_key\": \"{your-secret-key}\",\r\n  \"username\": \"{username}\",\r\n  \"password\": \"{password}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.vindata.com/v1/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"token"
+					]
+				},
+				"description": "This endpoint provides the authorization token that is used in other VINData API endpoints. Your secret_key can be obtained from your VINData Account Representative. Optionally, a username and password can be provided for interacting on behalf of a 3rd party user (ie. Dealer) = 3rd party authentication. All actions performed using the obtained token will be considered the action of that user. Typically used in a DMS setting."
+			},
+			"response": []
+		},
+		{
+			"name": "Profile/Get My Profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/profile",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"profile"
+					]
+				},
+				"description": "This endpoint provides information about the control Account / user profile."
+			},
+			"response": []
+		},
+		{
+			"name": "Credits/Get My Credits",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/credits",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"credits"
+					]
+				},
+				"description": "This endpoint provides information about available Account credits. Credits could be purchased on https://www.vindata.com/order page or through your Account Representative."
+			},
+			"response": []
+		},
+		{
+			"name": "Title Brands/Get Title Brands",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/brands",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"brands"
+					]
+				},
+				"description": "This endpoint provides all Title Brands with messages and descriptions."
+			},
+			"response": []
+		},
+		{
+			"name": "Reports/Get My Reports",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/reports",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"reports"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "This endpoint provides information about previously purchased reports.\n\nThe response contains an array of Report Info Objects. Each Report Info Objects contains information about the VIN and a link to the actual report. The actual HTML or PDF Report is available without authorization and can be shared."
+			},
+			"response": []
+		},
+		{
+			"name": "Reports/Get Raw Report Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/reports/:report_id",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"reports",
+						":report_id"
+					],
+					"variable": [
+						{
+							"key": "report_id",
+							"value": "34c0b6f1-8f8c-443b-ae98-2c2917c1d49c"
+						}
+					]
+				},
+				"description": "This endpoint contains the raw data representation of the report."
+			},
+			"response": []
+		},
+		{
+			"name": "Sample Reports/Get All Sample Reports",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/reports/sample/all",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"sample",
+						"all"
+					]
+				},
+				"description": "This endpoint provides information about existed Sample Reports.\n\nThe response contains an array of Sample Report Info Objects. Each Sample Report Info Objects contains information about the vehicle, about product and a link to the actual sample report data."
+			},
+			"response": []
+		},
+		{
+			"name": "Sample Reports/Get Raw Sample Report",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/reports/sample/:product_code/:vehicle_type/:color",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"sample",
+						":product_code",
+						":vehicle_type",
+						":color"
+					],
+					"variable": [
+						{
+							"key": "product_code",
+							"value": "vhr"
+						},
+						{
+							"key": "vehicle_type",
+							"value": "car"
+						},
+						{
+							"key": "color",
+							"value": "red"
+						}
+					]
+				},
+				"description": "This endpoint provides Sample Report by vehicle type, color and product."
+			},
+			"response": []
+		},
+		{
+			"name": "Products/Get Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/products",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"products"
+					]
+				},
+				"description": "This endpoint provides information about products registered in the application.\n\nThe response contains an array of Product objects. Each Product Object contains information about an ID, name, and the state of the product. Please note that reports can only be purchased for active products."
+			},
+			"response": []
+		},
+		{
+			"name": "Products/Buy Report for Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/products/:product_code/reports/:vin?force=false",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"products",
+						":product_code",
+						"reports",
+						":vin"
+					],
+					"query": [
+						{
+							"key": "force",
+							"value": "false"
+						}
+					],
+					"variable": [
+						{
+							"key": "product_code",
+							"value": "vhr"
+						},
+						{
+							"key": "vin",
+							"value": "4VZVU1E97GC081173"
+						}
+					]
+				},
+				"description": "This endpoint can be used to purchase new reports.\n\nThe response contains a short description about the new report (VIN, Product Name, Links and so on) The usage of this endpoint will reduce the number of credits in an Account."
+			},
+			"response": []
+		},
+		{
+			"name": "Batch API/Create Batch of Reports for Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"The batch 12/12/21\",\r\n  \"product\": \"vhr\",\r\n  \"force\": true,\r\n  \"vins\": [\r\n    \"WP0AF2A98KS165516\",\r\n    \"WP0CA2999XS654406\"\r\n  ],\r\n  \"callback\": \"https://my-site/api/callback\",\r\n  \"callbackMethod\": \"GET\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.vindata.com/v1/batch",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"batch"
+					]
+				},
+				"description": "Create a batch of reports for the selected product. The reports will be created asynchronously. The status of the batch can be checked by running Get Batch endpoint.\n\nYou can add the callback into the batch creation request. The URL from this field will be called when the batch is finished. The URL will be called by a simple GET request without any changes."
+			},
+			"response": []
+		},
+		{
+			"name": "Batch API/Get Batch by UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/batch/:batch_uuid",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"batch",
+						":batch_uuid"
+					],
+					"variable": [
+						{
+							"key": "batch_uuid",
+							"value": "2d0f0097-068b-4ccf-8543-35428c881db0"
+						}
+					]
+				},
+				"description": "Get information about a previously created batch."
+			},
+			"response": []
+		},
+		{
+			"name": "Batch API/Get Batch Reports by UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200 or 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apitoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.vindata.com/v1/batch/:batch_uuid/reports",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vindata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"batch",
+						":batch_uuid",
+						"reports"
+					],
+					"variable": [
+						{
+							"key": "batch_uuid",
+							"value": "2d0f0097-068b-4ccf-8543-35428c881db0"
+						}
+					]
+				},
+				"description": "List of reports for the batch. Each report can have one of the following possible values in status field:\nDRAFT - report didn't created, \nREADY_TO_RUN - report is ready to be created, \nIN_PROGRESS - report is creating, \nSUCCESSFUL - report has been created successfully, \nNO_DATA - data providers have no data for this VIN, \nERROR - an error happened, report wasn't created, \nCANCELED - report creation has been canceled."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "vhr",
+			"value": "product_code"
+		}
+	]
+}
